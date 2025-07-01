@@ -1,3 +1,15 @@
+class BannerClass {
+  id: string = '';
+  imageSrc: ResourceStr = '';
+  url: string = '';
+
+  constructor(id: string, imageSrc: ResourceStr, url: string) {
+    this.id = id;
+    this.imageSrc = imageSrc;
+    this.url = url;
+  }
+}
+
 @Entry
 @Component
 struct Index {
@@ -5,29 +17,22 @@ struct Index {
 
   build() {
     Column() {
-      // 标题文本
       Text(this.message)
+        .fontSize(24)
+        .fontWeight(700)
         .width('100%')
         .textAlign(TextAlign.Start)
         .padding({ left: 16 })
-        .fontSize(24)
-        .fontWeight(700)
         .fontFamily('HarmonyHeiTi-Bold')
         .lineHeight(33)
-        .onClick(() => {
-          this.message = 'Welcome';
-        })
-
-      // 引入Banner组件
       Banner()
     }
-    .height('100%')
     .width('100%')
+    .height('100%')
     .backgroundColor('#F1F3F5')
   }
 }
 
-// 使用@Preview装饰的可单独预览的Banner组件
 @Preview
 @Component
 struct Banner {
@@ -62,62 +67,6 @@ struct Banner {
       new DotIndicator()
         .color('#1a000000')
         .selectedColor('#0A59F7'))
-  }
-}
-
-class BannerClass {
-  id: string = '';
-  imageSrc: ResourceStr = '';
-  url: string = '';
-
-  constructor(id: string, imageSrc: ResourceStr, url: string) {
-    this.id = id;
-    this.imageSrc = imageSrc;
-    this.url = url;
-  }
-}
-
-@Component
-struct EnablementItem {
-  private title: string = 'HarmonyOS第一课';
-  private brief: string = '基于真实的开发场景，提供向导式学习，多维度融合课程等内容，给开发者提供全新的学习体验。';
-
-  build() {
-    Column() {
-      Image($r('app.media.enablement_pic1'))
-        .width('100%')
-        .objectFit(ImageFit.Cover)
-        .height(96)
-        .borderRadius({
-          topLeft: 16,
-          topRight: 16
-        })
-      Text(this.title)
-        .height(19)
-        .width('100%')
-        .fontSize(14)
-        .textAlign(TextAlign.Start)
-        .textOverflow({ overflow: TextOverflow.Ellipsis })
-        .maxLines(1)
-        .fontWeight(400)
-        .padding({ left: 12, right: 12 })
-        .margin({ top: 8 })
-      Text(this.brief)
-        .height(32)
-        .width('100%')
-        .fontSize(12)
-        .textAlign(TextAlign.Start)
-        .textOverflow({ overflow: TextOverflow.Ellipsis })
-        .maxLines(2)
-        .fontWeight(400)
-        .fontColor('rgba(0, 0, 0, 0.6)')
-        .padding({ left: 12, right: 12 })
-        .margin({ top: 2 })
-    }
-    .width(160)
-    .height(169)
-    .borderRadius(16)
-    .backgroundColor(Color.White)
   }
 }
 
@@ -167,5 +116,50 @@ struct TutorialItem {
     .backgroundColor(Color.White)
     .padding(12)
     .alignItems(VerticalAlign.Top)
+  }
+}
+
+@Preview
+@Component
+struct EnablementItem {
+  private title: string = 'HarmonyOS第一课';
+  private brief: string = '基于真实的开发场景，提供向导式学习，多维度融合课程等内容，给开发者提供全新的学习体验。';
+
+  build() {
+    Column() {
+      Image($r('app.media.enablement_pic1'))
+        .width('100%')
+        .objectFit(ImageFit.Cover)
+        .height(96)
+        .borderRadius({
+          topLeft: 16,
+          topRight: 16
+        })
+      Text(this.title)
+        .height(19)
+        .width('100%')
+        .fontSize(14)
+        .textAlign(TextAlign.Start)
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+        .maxLines(1)
+        .fontWeight(400)
+        .padding({ left: 12, right: 12 })
+        .margin({ top: 8 })
+      Text(this.brief)
+        .height(32)
+        .width('100%')
+        .fontSize(12)
+        .textAlign(TextAlign.Start)
+        .textOverflow({ overflow: TextOverflow.Ellipsis })
+        .maxLines(2)
+        .fontWeight(400)
+        .fontColor('rgba(0, 0, 0, 0.6)')
+        .padding({ left: 12, right: 12 })
+        .margin({ top: 2 })
+    }
+    .width(160)
+    .height(169)
+    .borderRadius(16)
+    .backgroundColor(Color.White)
   }
 }
